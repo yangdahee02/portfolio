@@ -1,0 +1,694 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>서울시 사회문화적 요소를 고려한 스마트폴 우선입지 선정</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1c18168b-289a-81df-955a-cc4f2b19f058" class="page sans"><header><h1 class="page-title">서울시 사회문화적 요소를 고려한 스마트폴 우선입지 선정</h1><p class="page-description"></p><table class="properties"><tbody></tbody></table></header><div class="page-body"><figure id="1c18168b-289a-8001-aacb-c546715d1e87"><div class="source"><a href="%EC%84%9C%EC%9A%B8%EC%8B%9C_%EC%82%AC%ED%9A%8C%EB%AC%B8%ED%99%94%EC%A0%81_%EC%9A%94%EC%86%8C%EB%A5%BC_%EA%B3%A0%EB%A0%A4%ED%95%9C_%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%8F%B4_%EC%9A%B0%EC%84%A0%EC%9E%85%EC%A7%80_%EC%84%A0%EC%A0%95.pdf">서울시 사회문화적 요소를 고려한 스마트폴 우선입지 선정.pdf</a></div></figure><figure id="1c18168b-289a-80cd-831e-d369bc186e67" class="image"><a href="image%201.png"><img style="width:645.6458740234375px" src="image%201.png"/></a></figure><p id="1c18168b-289a-80e0-820e-c214ffc97d17" class="">9개의 행정동 결과 중 하나를 캡쳐한 사진</p><p id="1c18168b-289a-8179-9a63-e5d1f8e1621f" class="">
+</p><p id="1c18168b-289a-81db-83ad-cba1170696b0" class=""><strong>요약</strong></p><ul id="1c18168b-289a-81ac-86ba-cf3bfc813829" class="bulleted-list"><li style="list-style-type:disc">서울시 내 사회문화적 요소를 반영하여 <mark class="highlight-blue_background">스마트폴 최적 설치 위치를 도출</mark>한 공간 분석 프로젝트</li></ul><ul id="1c18168b-289a-801c-ad5f-ef5691f08cee" class="bulleted-list"><li style="list-style-type:disc">인구, 보행량, 범죄 및 사고 밀집도 등 다양한 지표를 정량화 및 시각화해, 우선 설치 대상지를 제안<br/><br/></li></ul><p id="1c18168b-289a-81c3-a721-d5bb630eec85" class=""><strong>역할</strong></p><ul id="1c18168b-289a-815f-9c5c-d62171fad8c6" class="bulleted-list"><li style="list-style-type:disc">2인 팀 프로젝트로 진행, 프로젝트 주제 선정과 분석 방향 제안을 직접 주도</li></ul><ul id="1c18168b-289a-81c0-8719-c92d72cf6e26" class="bulleted-list"><li style="list-style-type:disc">공간 통계 기법 선정과 MCLP 모델 코딩, 시각화 작업 전반을 직접 수행</li></ul><p id="1c18168b-289a-815d-ac21-ce7c84903b8d" class="">
+</p><p id="1c18168b-289a-81a1-9ad9-c7f41936c9d6" class=""><strong>성과</strong></p><ul id="1c18168b-289a-814e-a72d-e16b3046118e" class="bulleted-list"><li style="list-style-type:disc">7개 사회문화 요인을 통합한 <mark class="highlight-blue_background">공간 통계 모델 설계 및 최적화 모델 구현</mark></li></ul><ul id="1c18168b-289a-80c1-b6e5-c6edf872e3cd" class="bulleted-list"><li style="list-style-type:disc">서울시 내 스마트폴 설치 우선 대상지 도출</li></ul><ul id="1c18168b-289a-80b9-9b80-d5021004fd21" class="bulleted-list"><li style="list-style-type:disc">실제 정책 제안서 형태의 결과물로 완성</li></ul><ul id="1c18168b-289a-80d8-a52a-eb71bbd98666" class="bulleted-list"><li style="list-style-type:disc">관련 경진대회 우수상 수상</li></ul><p id="1c18168b-289a-8178-8099-fc3cffe6a5db" class="">
+</p><p id="1c18168b-289a-815a-9a79-f9f85197f9ce" class=""><strong>시기</strong></p><ul id="1c18168b-289a-8109-adc1-db419734ac13" class="bulleted-list"><li style="list-style-type:disc">2024.03 - 2024.06</li></ul><p id="1c18168b-289a-8191-8d94-cbfb3f7acd50" class="">
+</p><h1 id="1c18168b-289a-81b3-9cd8-fd7b9a3f0713" class="">📝세부 내용</h1><hr id="1c18168b-289a-8124-8653-de6970b7eea2"/><ol type="1" id="1c18168b-289a-801d-99e3-e81b00504a58" class="numbered-list" start="1"><li><strong>개요</strong></li></ol><ul id="1c18168b-289a-8075-ae6a-d89ba0ae8b50" class="bulleted-list"><li style="list-style-type:disc">서울시의 스마트시티 인프라 확산을 목표로, 스마트폴 설치에 앞서 우선 설치 대상지를 도출하기 위한 프로젝트</li></ul><ul id="1c18168b-289a-80db-8613-c21526589322" class="bulleted-list"><li style="list-style-type:disc">단순 인구나 행정구역 기준이 아닌 보행자 밀도, 범죄/사고 발생, 생활인구 등 <mark class="highlight-blue_background">사회문화적 요인을 반영해 정책적 우선순위가 높은 지역 선정</mark>이 핵심 목표</li></ul><p id="1c18168b-289a-8035-8c9a-e9b7fc99803e" class="">
+</p><ol type="1" id="1c18168b-289a-8027-9027-ef46c8f99fce" class="numbered-list" start="2"><li><strong>데이터 수집 및 분석 대상</strong></li></ol><ul id="1c18168b-289a-80ad-b319-cb462545418a" class="bulleted-list"><li style="list-style-type:disc">스마트폴 설치 목적을 고려해, 서울시 교통사고 발생 위치, 범죄율, 유동인구, 보행자 안전지수 등 사회문화적 요소를 반영한 변수 선정</li></ul><ul id="1c18168b-289a-8000-af3f-fc2aa8d4c27f" class="bulleted-list"><li style="list-style-type:disc">모든 데이터는 QGIS에서 병합 후, 시각화 및 공간 통계 분석이 가능한 구조로 전처리</li></ul><p id="1c18168b-289a-80e9-a4a6-dd25ca2250bc" class="">
+</p><ol type="1" id="1c18168b-289a-8087-95f1-f9b031515cb5" class="numbered-list" start="3"><li><strong>요인 분석 및 가중치 설정</strong></li></ol><table id="1c18168b-289a-8053-a43d-db3b3f2c61dd" class="simple-table"><thead class="simple-table-header"><tr id="1c18168b-289a-80ea-b884-da996f2a0476"><th id="FaJ&gt;" class="simple-table-header-color simple-table-header" style="width:137px">기법</th><th id="I|w&lt;" class="simple-table-header-color simple-table-header" style="width:137px">적용 대상</th><th id="@YA&lt;" class="simple-table-header-color simple-table-header" style="width:240.71875px">분석 목적</th></tr></thead><tbody><tr id="1c18168b-289a-80c0-a241-dcafa7f28eb3"><td id="FaJ&gt;" class="" style="width:137px">KDE</td><td id="I|w&lt;" class="" style="width:137px">범되, 사고, 보행자</td><td id="@YA&lt;" class="" style="width:240.71875px">고위험 지역 및 이용 밀집도 시각화</td></tr><tr id="1c18168b-289a-8028-9da2-fc84d39ec2af"><td id="FaJ&gt;" class="" style="width:137px">상대적 위험도 분석</td><td id="I|w&lt;" class="" style="width:137px">범죄, 인구비</td><td id="@YA&lt;" class="" style="width:240.71875px">인구대비 위험성 반영</td></tr><tr id="1c18168b-289a-80be-879b-ea3df5d7bc38"><td id="FaJ&gt;" class="" style="width:137px">PCA</td><td id="I|w&lt;" class="" style="width:137px">전체 지표</td><td id="@YA&lt;" class="" style="width:240.71875px">변수 축소 및 가중치 통합</td></tr></tbody></table><ul id="1c18168b-289a-80ca-a361-fc0661bbf44d" class="bulleted-list"><li style="list-style-type:disc">다중 기준 의사결정 기법과 공간 통계 분석을 적용하여 설치 우선순위 평가 모델 구축</li></ul><ul id="1c18168b-289a-80ce-9969-e0e523b3f5c8" class="bulleted-list"><li style="list-style-type:disc">수집 데이터는 공간 통계 기법을 활용해 <mark class="highlight-blue_background">지역 간 차이 정량화</mark></li></ul><ul id="1c18168b-289a-801d-ba3a-fa11e72d49d2" class="bulleted-list"><li style="list-style-type:disc">각 지표는 밀집도, 위험도, 접근성의 관점에서 분석 후<mark class="highlight-blue_background"> PCA를 통해 지표 간 중복성 제거 및 통합 점수 산출에 활용</mark></li></ul><ul id="1c18168b-289a-8099-8ba3-c6e1bba83e36" class="bulleted-list"><li style="list-style-type:disc">통합 점수는 공간 단위(행정동) 기준 계산 후 최적화 모델 입력값으로 사용</li></ul><p id="1c18168b-289a-804d-8a52-ec4662a6372a" class="">
+</p><ol type="1" id="1c18168b-289a-8030-a4c0-f8aa9747a700" class="numbered-list" start="4"><li><strong>최적 입지 도출 (MCLP)</strong></li></ol><ul id="1c18168b-289a-802e-82d6-d520b6bab9a6" class="bulleted-list"><li style="list-style-type:disc">통합 점수 기반 입지 후보지 선별 후 MCLP 모델을 적용해 <mark class="highlight-blue_background">제한된 자원으로 최대한 많은 수요를 커버 가능한 위치 도출</mark></li></ul><ul id="1c18168b-289a-8057-ac3a-c90e0c9b6134" class="bulleted-list"><li style="list-style-type:disc">행정동 단위 통합 점수 상위 지역을 설치 후보지로 설정 → 각 후보지의 커버리지 계산 → 커버리지 기준 우선 설치 대상지 선정</li></ul><ul id="1c18168b-289a-8007-8227-c0d3c674cac7" class="bulleted-list"><li style="list-style-type:disc">최적화 과정은 Python 기반으로 구현, 최종 결과는 QGIS에서 시각화</li></ul><p id="1c18168b-289a-80c4-8c4e-c015edd2fd51" class="">
+</p><ol type="1" id="1c18168b-289a-801f-a2a5-d3755fb18eee" class="numbered-list" start="5"><li><strong>결과 및 성과</strong></li></ol><ul id="1c18168b-289a-804f-a612-cf95246700e1" class="bulleted-list"><li style="list-style-type:disc">단순 지표 비교가 아닌 사회문화적 요인을 통합한 정량적 점수와 공간 최적화 알고리즘을 활용해 실제 정책에 적용 가능한 형태로 정리</li></ul><ul id="1c18168b-289a-80c3-984a-d9d0df5ea79a" class="bulleted-list"><li style="list-style-type:disc">다른 도시 적용 가능성 확보</li></ul><ul id="1c18168b-289a-804f-8847-dd11305aaefa" class="bulleted-list"><li style="list-style-type:disc">추후 다양한 스마트 인프라 입지 분석으로 확장 가능</li></ul><ul id="1c18168b-289a-80ba-8fe0-e44e8d6512ef" class="bulleted-list"><li style="list-style-type:disc">공간정보 경진대회 우수상 수상</li></ul><p id="1c18168b-289a-81e5-9f91-d2a656259ffd" class="">
+</p><p id="1c18168b-289a-8117-888e-ffee135fce8b" class="">
+</p><p id="1c18168b-289a-8166-9174-de6cbf267801" class=""><a href="%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%83%E1%85%A1%E1%84%92%E1%85%B4%EF%BD%9CGIS%20Data%20Engineer%20%E1%84%91%E1%85%A9%E1%84%90%E1%85%B3%E1%84%91%E1%85%A9%E1%86%AF%E1%84%85%E1%85%B5%E1%84%8B%E1%85%A9%201c18168b289a805985f2fc85f825dc9c.html">◀ 이전 페이지 돌아가기</a></p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

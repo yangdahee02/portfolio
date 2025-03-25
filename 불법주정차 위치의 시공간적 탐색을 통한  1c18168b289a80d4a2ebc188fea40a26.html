@@ -1,0 +1,694 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>불법주정차 위치의 시공간적 탐색을 통한 집중 단속 도로구간 설정</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1c18168b-289a-80d4-a2eb-c188fea40a26" class="page sans"><header><h1 class="page-title">불법주정차 위치의 시공간적 탐색을 통한 집중 단속 도로구간 설정</h1><p class="page-description"></p><table class="properties"><tbody></tbody></table></header><div class="page-body"><figure id="1c18168b-289a-8083-8bbf-c454b5066b56"><div class="source"><a href="%EB%B6%88%EB%B2%95%EC%A3%BC%EC%A0%95%EC%B0%A8_%EC%9C%84%EC%B9%98%EC%9D%98_%EC%8B%9C%EA%B3%B5%EA%B0%84%EC%A0%81_%ED%83%90%EC%83%89%EC%9D%84_%ED%86%B5%ED%95%9C_%EC%A7%91%EC%A4%91_%EB%8B%A8%EC%86%8D_%EB%8F%84%EB%A1%9C%EA%B5%AC%EA%B0%84_%EC%84%A4%EC%A0%95.pdf">불법주정차 위치의 시공간적 탐색을 통한 집중 단속 도로구간 설정.pdf</a></div></figure><figure id="1c18168b-289a-8039-9e0f-f92e01466bde" class="image"><a href="image.png"><img style="width:441.9895935058594px" src="image.png"/></a></figure><p id="1c18168b-289a-8011-9f79-d7fec24e9a8d" class="">
+</p><p id="1c18168b-289a-8004-9eb0-cf30b596f274" class=""><strong>요약</strong></p><ul id="1c18168b-289a-8063-8125-eb0012864dd2" class="bulleted-list"><li style="list-style-type:disc">서울시 불법주정차 데이터 기반으로 <mark class="highlight-blue_background">시공간적 패턴을 탐색하여 집중 단속 도로 구간 도출</mark></li></ul><ul id="1c18168b-289a-8099-9e3a-e05be429e10e" class="bulleted-list"><li style="list-style-type:disc">현재 단속 한계를 보완하고, <mark class="highlight-blue_background">시계열 분석과 공간 통계 분석</mark>을 활용해 효율적 행정 집행이 가능하도록 지원하는 것이 주요 목표<br/><br/></li></ul><p id="1c18168b-289a-8036-af45-f222fbe4a854" class=""><strong>역할</strong></p><ul id="1c18168b-289a-809d-8b5a-d890e5432ad6" class="bulleted-list"><li style="list-style-type:disc">2인 팀 프로젝트로 진행, 분석 기법 구현과 결과 시각화 중심의 역할을 주도적으로 수행</li></ul><ul id="1c18168b-289a-80eb-977f-dbfa8c2ee3fe" class="bulleted-list"><li style="list-style-type:disc">상대적 위험면 계산, 알고리즘 구현 등 분석의 기술적 실행과 설계 담당</li></ul><p id="1c18168b-289a-8000-b1b7-fc0d2a4f10c1" class="">
+</p><p id="1c18168b-289a-8012-adcd-c03f0bf94ae7" class=""><strong>성과</strong></p><ul id="1c18168b-289a-8060-9efd-c888f3f32340" class="bulleted-list"><li style="list-style-type:disc">민원 건수 기준이 아닌 객관적 시공간 데이터 기반의 단속 기준 제시</li></ul><ul id="1c18168b-289a-80e4-8245-e2872586b184" class="bulleted-list"><li style="list-style-type:disc">위험도 점수 및 시각화를 통해 단속 우선 구간 도출</li></ul><ul id="1c18168b-289a-8037-ab65-c392afa03870" class="bulleted-list"><li style="list-style-type:disc">분석 결과를 행정용 보고서 형태로 정리하여 현실 적용 가능성 확보</li></ul><ul id="1c18168b-289a-80b4-be39-e6e3b2ab6c51" class="bulleted-list"><li style="list-style-type:disc">서울시 빅데이터 캠퍼스 공모전 우수상 수상</li></ul><p id="1c18168b-289a-80a9-bd39-e3926de655dc" class="">
+</p><p id="1c18168b-289a-8039-9fa8-c47993e53381" class=""><strong>시기</strong></p><ul id="1c18168b-289a-8078-a39a-d9f23fb71d31" class="bulleted-list"><li style="list-style-type:disc">2023.09 - 2023.11</li></ul><p id="1c18168b-289a-8072-9bd9-fc9e7cf6a933" class="">
+</p><h1 id="1c18168b-289a-806d-820a-dff7d3dfa3e1" class="">📝세부 내용</h1><hr id="1c18168b-289a-803f-a767-cef1df4f8818"/><ol type="1" id="1c18168b-289a-80ad-a3cb-c19e46b656ef" class="numbered-list" start="1"><li><strong>개요</strong></li></ol><ul id="1c18168b-289a-8031-8835-deeaa79e8e95" class="bulleted-list"><li style="list-style-type:disc">서울시의 불법주정차 데이터를 바탕으로 시공간적 패턴을 정량적으로 분석하여 집중 단속 도로 구간 선정</li></ul><ul id="1c18168b-289a-8055-90fc-df25ff44e2c1" class="bulleted-list"><li style="list-style-type:disc">기존 단속 정책의 한계를 넘어, <mark class="highlight-blue_background">객관적 시계열 밀집도, 상대적 위험면 분석을 통해 효율적 단속 우선순위 로드맵 제안</mark>이 목표</li></ul><p id="1c18168b-289a-8010-bcb3-ef73e24fbaf3" class="">
+</p><ol type="1" id="1c18168b-289a-80bb-a3a7-e089581c9c7b" class="numbered-list" start="2"><li><strong>데이터 수집 및 분석 기준</strong></li></ol><table id="1c18168b-289a-802f-929c-fed07b25b374" class="simple-table"><thead class="simple-table-header"><tr id="1c18168b-289a-80b0-9242-c11709811e5b"><th id=":g[}" class="block-color-gray_background simple-table-header" style="width:164px">항목</th><th id=":soC" class="block-color-gray_background simple-table-header" style="width:496px">처리 방식</th></tr></thead><tbody><tr id="1c18168b-289a-80c7-9234-c64be1a63acc"><td id=":g[}" class="" style="width:164px">공간 정제</td><td id=":soC" class="" style="width:496px">XY 좌표 오류 제거 및 도로 링크 기반 매칭</td></tr><tr id="1c18168b-289a-8024-b255-d845de11a4a0"><td id=":g[}" class="" style="width:164px">시간 필터링</td><td id=":soC" class="" style="width:496px">요일/시간대별 밀집도 분석을 위한 시계열 구조화</td></tr><tr id="1c18168b-289a-80aa-b020-e46d90c984de"><td id=":g[}" class="" style="width:164px">중복 제거</td><td id=":soC" class="" style="width:496px">동일 위치/시간 반복 신고 제거</td></tr><tr id="1c18168b-289a-8074-8e7e-f42256e6f773"><td id=":g[}" class="" style="width:164px">행정단위 기준화</td><td id=":soC" class="" style="width:496px">도로 링크 및 법정동 기준 단속 권역 설정</td></tr></tbody></table><ul id="1c18168b-289a-80f7-a4ef-c4364a1c5f62" class="bulleted-list"><li style="list-style-type:disc">빅데이터 캠퍼스에서 제공하는 불법주정차 단속 데이터 활용</li></ul><ul id="1c18168b-289a-802d-9430-fcd036414d39" class="bulleted-list"><li style="list-style-type:disc">공간 데이터를 대상으로 공간 좌표 정제, 날짜/시간 파싱, 중복 필터링 등 수행해 분석 가능 형태로 전처리</li></ul><ul id="1c18168b-289a-80d6-a5e7-ea5c4fb8915a" class="bulleted-list"><li style="list-style-type:disc">불법주정차 위치의 빈도와 밀도뿐 아니라,<mark class="highlight-blue_background"> 시간대, 요일, 위치 등을 고려해 시공간 패턴 분석의 기반 마련</mark></li></ul><p id="1c18168b-289a-80cc-8504-e18bf63bf36e" class="">
+</p><ol type="1" id="1c18168b-289a-801e-ad33-ea8cd509909b" class="numbered-list" start="3"><li><strong>시공간 분석 및 위험도 계산</strong></li></ol><table id="1c18168b-289a-807a-9b34-c798935b450d" class="simple-table"><thead class="simple-table-header"><tr id="1c18168b-289a-8083-9980-dd5556f1d62a"><th id="FaJ&gt;" class="simple-table-header-color simple-table-header" style="width:163px">기법</th><th id="@YA&lt;" class="simple-table-header-color simple-table-header" style="width:476.71875px">분석 목적</th></tr></thead><tbody><tr id="1c18168b-289a-8074-8991-d10f0dd4d8b7"><td id="FaJ&gt;" class="" style="width:163px">시계열 분석</td><td id="@YA&lt;" class="" style="width:476.71875px">요일/시간대별 집중 민원 발생 시간대 도출</td></tr><tr id="1c18168b-289a-80c7-9d22-f00ddbf5958f"><td id="FaJ&gt;" class="" style="width:163px">상대적 위험도 분석</td><td id="@YA&lt;" class="" style="width:476.71875px">지역별 단속 건수/전체 비율 계산</td></tr><tr id="1c18168b-289a-80ea-a4d6-f308ad5792fe"><td id="FaJ&gt;" class="" style="width:163px">KDE</td><td id="@YA&lt;" class="" style="width:476.71875px">공간 집중도 시각화</td></tr><tr id="1c18168b-289a-80bb-a88a-efbaccb82627"><td id="FaJ&gt;" class="" style="width:163px">클러스터링</td><td id="@YA&lt;" class="" style="width:476.71875px">위험도 유사 지역군 그룹화</td></tr></tbody></table><ul id="1c18168b-289a-8080-b6a2-cfecdb814cc9" class="bulleted-list"><li style="list-style-type:disc">시간대/요일별 밀집도 시각화와 함께 상대적 위험도 계산을 통해 도로 구간별 단속 필요 수준 정량화</li></ul><ul id="1c18168b-289a-8016-9f7c-e296555dc6f0" class="bulleted-list"><li style="list-style-type:disc">각 도로 구간은 시각적 지도 위에 위험도 점수로 표현</li></ul><ul id="1c18168b-289a-800e-815f-c6e207733a63" class="bulleted-list"><li style="list-style-type:disc">단속 자원이 한정된 상황에서 효율적 우선 설정이 가능하도록 <mark class="highlight-blue_background">단속 우선도 수치화</mark></li></ul><p id="1c18168b-289a-805a-a5d3-c33bdae195be" class="">
+</p><ol type="1" id="1c18168b-289a-8020-9592-faef0e782ad8" class="numbered-list" start="4"><li><strong>집중 단속 구간 선정 및 결과</strong></li></ol><ul id="1c18168b-289a-80b2-8017-ea0e45e1c788" class="bulleted-list"><li style="list-style-type:disc">상대적 위험도 분석과 클러스터링 결과 바탕으로, 단속 우선순위가 높은 도로 구간 선정</li></ul><ul id="1c18168b-289a-80fa-832c-ca15eabcf62f" class="bulleted-list"><li style="list-style-type:disc">위험도 점수 상위 10%, 시간 집중성, 밀도를 선정 기준으로 설정</li></ul><ul id="1c18168b-289a-80b0-bc32-e8aeb6839dc8" class="bulleted-list"><li style="list-style-type:disc">도출된 대상지는 위험도 맵, 근거 지표 등과 함께 시각화 </li></ul><p id="1c18168b-289a-8091-80f8-f7d0f16cabd0" class="">
+</p><ol type="1" id="1c18168b-289a-806d-a6da-d720c9d0c905" class="numbered-list" start="5"><li><strong>결과 및 성과</strong></li></ol><ul id="1c18168b-289a-8070-8cfc-ca289b7bf438" class="bulleted-list"><li style="list-style-type:disc">실제 단속 전략 수립에 활용 가능한 정책 제안서 형태로 완성</li></ul><ul id="1c18168b-289a-80f3-9f60-d3268fa66d06" class="bulleted-list"><li style="list-style-type:disc">기존 불법주정차 단속 한계를 넘어 데이터 기반 우선순위 정책의 가능성 제시</li></ul><ul id="1c18168b-289a-801f-bef1-e1fa1ba7193f" class="bulleted-list"><li style="list-style-type:disc">빅데이터 캠퍼스 공모전 우수상 수상</li></ul><p id="1c18168b-289a-80d6-ba44-c7a4ecab64f7" class="">
+</p><p id="1c18168b-289a-8022-ba4d-e9ddc031ab69" class="">
+</p><p id="1c18168b-289a-80d2-9792-d41652f9ee68" class=""><a href="%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%83%E1%85%A1%E1%84%92%E1%85%B4%EF%BD%9CGIS%20Data%20Engineer%20%E1%84%91%E1%85%A9%E1%84%90%E1%85%B3%E1%84%91%E1%85%A9%E1%86%AF%E1%84%85%E1%85%B5%E1%84%8B%E1%85%A9%201c18168b289a805985f2fc85f825dc9c.html">◀ 이전 페이지 돌아가기</a></p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
